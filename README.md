@@ -77,3 +77,16 @@ User can find people with the same interests in reading domains and even make fr
 Contact Us Form can be accessed through this page. Any query regarding the website would be handled through contact us form.
 
 ![alt text](https://github.com/AniketGaudgaul/HackOverFlow_Hackathon/blob/master/Documentation/Images/contact_us.png?raw=true)  
+
+----
+
+## Future Scope
+
+1) Chat Window implementation for the users to chat with each other on the same website.
+2) Improved Search Algorithms.
+3) Tie up with local Cafe's for the users with a good credit score.
+4) Better Profile edits.
+
+----
+
+Any Suggestions are welcome! Thanks for viewing the project! :)
