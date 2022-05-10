@@ -1,0 +1,100 @@
+{% extends 'basic.html' %}
+
+{% load static %}
+
+
+
+{% block title %}Index{% endblock title %}
+
+{% block body %}
+<!--FORM-->
+
+<div class="container1"><br>
+    <form action="/signup/" method="post" style="text-align: center;">{% csrf_token %}
+        <div class="main2" style="margin-left: 50px; margin-right: 50px;">
+
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="text" class="form-control" name="first_name" id="first_name">
+                    <label for="first_name">Enter First Name</label>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="text" class="form-control" name="last_name" id="last_name">
+                    <label for="last_name">Enter Last Name</label>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="text" class="form-control" name="username" id="username">
+                    <label for="username">Enter username</label>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="password" class="form-control" name="password" id="password">
+                    <label for="username">Enter password</label>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="number" class="form-control" name="contact" id="contact">
+                    <label for="contact">Contact Number</label>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="number" class="form-control" name="age" id="age">
+                    <label for="age">Age</label>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="email" class="form-control" name="email" id="email">
+                    <label for="email">Email address (name@example.com)</label>
+                </div>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="Male">
+                <label class="form-check-label" for="Male">
+                    Male
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="Female" checked>
+                <label class="form-check-label" for="Female">
+                    Female
+                </label>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-floating">
+
+                    <input type="text" name="address" class="form-control" id="address" style="height: 200px;">
+                    <label for="address">Type your address here</label>
+                </div>
+            </div>
+        </div>
+
+        <!--Send Message Button-->
+        <button type="submit" class="btn  btn-outline-secondary" style="margin: 10px;">
+            Send message
+        </button>
+
+        <!--Reset Form Button-->
+        <button type="reset" class="btn btn-outline-secondary">
+            Reset form
+        </button>
+    </form>
+    <br>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,179 @@
+{% extends 'basic.html' %}
+
+{% load static %}
+
+{% block stylesheet %}{% static 'dashboard.css' %}{% endblock stylesheet %}
+
+
+{% block title %}Index{% endblock title %}
+
+{% block body %}
+<div class="container"><br>
+    <section>
+        <h3 class="text-center">Dashboard</h3>
+        <div class="container pt-5 pb-2">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col">
+                    <div class="card mb-3 neumorphism" style="border-radius: .5rem; border-color: transparent;">
+                        <div class="row g-0">
+                            <div class="col-md-4 gradient-custom text-center text-white"
+                                style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                                    alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+                                <h5>{{user.first_name}} {{user.last_name}}</h5>
+                                <p>My bio info here</p>
+                                <div>
+                                    <div class="text-danger mb-1 me-2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <span>31</span>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body p-4">
+                                    <h4>Information</h4>
+                                    <hr class="mt-0 mb-4">
+                                    <div class="row pt-1">
+                                        <div class="col-6 mb-3">
+                                            <h6>Email</h6>
+                                            <p class="text-muted">{{user.email}}</p>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <h6>Phone</h6>
+                                            <p class="text-muted">{{user.contact}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row pt-1">
+                                        <div class="col-6 mb-3">
+                                            <h6>Gender</h6>
+                                            <p class="text-muted">Male</p>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <h6>Age</h6>
+                                            <p class="text-muted">{{user.age}}</p>
+                                        </div>
+                                    </div>
+                                    <h6>Address</h6>
+                                    <p class="text-muted">{{user.address}}</p>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container pt-4">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="card p-2 neumorphism" style="border-radius:0.5rem ; border-color: transparent;">
+                    <h4 class="text-center">Books Listed</h4>
+                    <hr class="mt-0 mb-4">
+                    <!-- <div class="row pt-1">
+                        <div class="col-6 mb-3">
+                            <h6>Recent</h6>
+                            <p class="text-muted">Lorem ipsum</p>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <h6>Most Viewed</h6>
+                            <p class="text-muted">Dolor sit amet</p>
+                        </div>
+                    </div>
+                </div> -->
+                    <div class="container ">
+
+                        {% for range1,range2,book in allBooks %}
+
+
+                        {% comment %} {%for j in range1%} {% endcomment %}
+                        <div class="row container">
+
+                            {%for k in book%}
+                            {% if forloop.counter|divisibleby:2 and forloop.counter > 0 and not forloop.last %}
+                            <div class="col " style="width: 500px ;">
+                                <div class="card floatcard" style="border-color: transparent;">
+                                    <img src="/{{k.image}}" class="card-img-top" alt="..." style="height: 500px; width: auto;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{k}}</h5>
+                                        <p class="card-text"><b>By: </b>{{k.author}}</p>
+                                        <p class="card-text"><b>Publishing House: </b>{{k.publishing_house}}</p>
+                                        <p class="card-text"><b>Uploaded By: </b>{{k.provider.first_name}} {{k.provider.last_name}}</p>
+                                        <p class="card-text"><b>Description: </b>{{k.description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row container">
+                            {%else%}
+                            <div class="col " style="width: 500px ;">
+                                <div class="card floatcard" style="border-color: transparent;">
+                                    <img src="/{{k.image}}" class="card-img-top" alt="..." style="height: 500px; width: auto;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{k}}</h5>
+                                        <p class="card-text"><b>By: </b>{{k.author}}</p>
+                                        <p class="card-text"><b>Publishing House: </b>{{k.publishing_house}}</p>
+                                        <p class="card-text"><b>Uploaded By: </b>{{k.provider.first_name}} {{k.provider.last_name}}</p>
+                                        <p class="card-text"><b>Description: </b>{{k.description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {%endif%}
+                            {%endfor%}
+
+                        </div>
+
+                    </div>
+
+                    {% comment %} {% endfor %} {% endcomment %}
+                    {% endfor %}
+                    <br>
+                    <button style="width: fit-content; margin: auto;" type="button"
+                        class="mt-2 btn btn1 btn-outline-success" align="center" data-bs-toggle="modal"
+                        data-bs-target="#addbook">
+                        Add Book
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="addbook" tabindex="-1" aria-labelledby="LoginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-dark bg1">
+                    <h5 class="modal-title" id="LoginModalLabel">Add book to the Listing</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-dark bg1">
+                    <!--Form-->
+                    <form action="" enctype='multipart/form-data' method="post" style="text-align: center;">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        {{ form.errors }}
+                        {{ form.non_field_errors }}
+                        <button type="submit">Add Book</button>
+                    </form>
+                </div>
+                <div class="modal-footer text-dark bg1">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+</div>
+
+
+
+
+
+
+{% endblock body %}

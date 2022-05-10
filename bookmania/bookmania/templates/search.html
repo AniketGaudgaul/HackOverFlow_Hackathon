@@ -1,0 +1,54 @@
+{% extends 'basic.html' %}
+
+{% load static %}
+
+
+
+{% block title %}Index{% endblock title %}
+
+{% block body %}
+
+
+<div class="container m-5">
+
+    {% for prod,range1, range2,nslides in allProds %}
+    {% if prod %}
+<center><h1 style="padding:50px;">We found these Books listed by our bookworms!</h1></center>
+
+
+    {% endif %}
+
+    {% comment %} {%for j in range2%} {% endcomment %}
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+
+        {%for k in prod%}
+        {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+        </div>
+        <div class="container row row-cols-1 row-cols-sm-2 g-2" >
+        {%endif%}
+        <div class="col" style="width: 500px ;">
+            <div class="card">
+                <center>
+                <img src="/{{k.image}}" class="card-img-top" alt="..." style="height: 300px; width: 200px;">
+                </center>
+                <div class="card-body">
+                    <h5 class="card-title">{{k}}</h5>
+                    <p class="card-text"><b>By: </b>{{k.author}}</p>
+                    <p class="card-text"><b>Publishing House: </b>{{k.publishing_house}}</p>
+                    <p class="card-text"><b>Uploaded By: </b>{{k.provider.first_name}} {{k.provider.last_name}}</p>
+                    {% comment %} <p class="card-text"><b>Description: </b>{{k.description}}</p> {% endcomment %}
+                    <button class="btn btn-primary">Get Contact Details</button>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+
+    </div>
+
+</div>
+
+{% comment %} {% endfor %} {% endcomment %}
+        {% endfor %}
+
+
+{% endblock body %}
